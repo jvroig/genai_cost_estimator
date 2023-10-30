@@ -41,3 +41,10 @@ select option {
 [readonly] {
     color: #a9a9a9; /* Light gray color for readonly text */
 }
+
+#costEstimate {
+    height: 150px; /* Adjust the height to your preference */
+    white-space: pre-line;
+    overflow: auto;
+    readonly: true;
+}

@@ -49,6 +49,19 @@
         </div>
     </div>
 
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="costEstimate" class="form-label">Monthly estimate:</label>
+                    <textarea id="costEstimate" class="form-control" readonly></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
    <!-- Include Bootstrap 5 JS and Popper.js from CDNs -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
@@ -57,7 +70,8 @@
         // Function to populate the model select based on the selected platform
         function updateModelSelect() {
             const platformSelect = document.getElementById("platformSelect");
-            const modelSelect = document.getElementById("modelSelect");
+            const modelSelect    = document.getElementById("modelSelect");
+            const costEstimate   = document.getElementById("costEstimate");
             const selectedPlatform = platformSelect.value;
 
             // Clear the current options
@@ -69,8 +83,9 @@
                 }
             }
 
-            inputTokenDisplay.value = '';
+            inputTokenDisplay.value  = '';
             outputTokenDisplay.value = '';
+            costEstimate.value       = '';
         }
 
         // Function to display rate tokens when a model is selected
@@ -86,10 +101,20 @@
                 const modelData = tableData[selectedPlatform][selectedModel];
                 inputTokenDisplay.value = modelData.InputRateTokens;
                 outputTokenDisplay.value = modelData.OutputRateTokens;
-
+                updateCostEstimate(modelData.InputRateTokens, modelData.OutputRateTokens);
             } else {
                 tokenDisplay.value = "";
             }
+        }
+
+        function updateCostEstimate(input_rate, output_rate) {
+            const costEstimate = document.getElementById("costEstimate");
+            estimate_text = "Assuming you process 1000 generative AI transactions per hour, operate on a 24-hr/day basis, and each transaction has an average of 300 input tokens and produce an average of 250 output tokens, your 30-day monthly estimate is: $";
+            totalInputCost = (input_rate * 300 * 1000 * 24 * 30) / 1000;
+            totalOutputCost = (output_rate * 300 * 1000 * 24 * 30) / 1000;
+            totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+
+            costEstimate.value = estimate_text + totalCost + "."
         }
     </script>
 </body>
