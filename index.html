@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gen AI Cost Estimator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="data.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="platformSelect" class="form-label">Platform:</label>
+                    <select id="platformSelect" class="form-select" onchange="updateModelSelect()">
+                        <option value="">Select Platform</option>
+                        <!-- Populate platform options dynamically from the tableData object -->
+                        <script>
+                            for (const platform in tableData) {
+                                document.write(`<option value="${platform}">${platform}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="modelSelect" class="form-label">Model:</label>
+                    <select id="modelSelect" class="form-select" onchange="updateRateTokens()">
+                        <option value="">Select Model</option>
+                        <!-- This select will be populated dynamically based on the selected platform -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputRateTokens" class="form-label">Cost per 1K Input Tokens ($):</label>
+                    <input type="text" id="inputTokenDisplay" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="outputRateTokens" class="form-label">Cost per 1K Output Tokens ($):</label>
+                    <input type="text" id="outputTokenDisplay" class="form-control" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Include Bootstrap 5 JS and Popper.js from CDNs -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+
+    <script>
+        // Function to populate the model select based on the selected platform
+        function updateModelSelect() {
+            const platformSelect = document.getElementById("platformSelect");
+            const modelSelect = document.getElementById("modelSelect");
+            const selectedPlatform = platformSelect.value;
+
+            // Clear the current options
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+
+            if (selectedPlatform && tableData[selectedPlatform]) {
+                for (const model in tableData[selectedPlatform]) {
+                    modelSelect.innerHTML += `<option value="${model}">${model}</option>`;
+                }
+            }
+
+            inputTokenDisplay.value = '';
+            outputTokenDisplay.value = '';
+        }
+
+        // Function to display rate tokens when a model is selected
+        function updateRateTokens() {
+            const platformSelect = document.getElementById("platformSelect");
+            const modelSelect = document.getElementById("modelSelect");
+            const tokenDisplay = document.getElementById("tokenDisplay");
+
+            const selectedPlatform = platformSelect.value;
+            const selectedModel = modelSelect.value;
+
+            if (selectedPlatform && selectedModel && tableData[selectedPlatform] && tableData[selectedPlatform][selectedModel]) {
+                const modelData = tableData[selectedPlatform][selectedModel];
+                inputTokenDisplay.value = modelData.InputRateTokens;
+                outputTokenDisplay.value = modelData.OutputRateTokens;
+
+            } else {
+                tokenDisplay.value = "";
+            }
+        }
+    </script>
+</body>
+</html>

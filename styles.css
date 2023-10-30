@@ -1,0 +1,41 @@
+body {
+    background-color: #121212; /* Dark background color */
+    color: #ffffff; /* Light text color */
+}
+
+.container {
+    background-color: #1a1a1a; /* Slightly lighter background for the container */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-control {
+    background-color: #2b2b2b; /* Dark input fields */
+    color: #ffffff; /* Light text color for input fields */
+    border: 1px solid #424242; /* Slightly lighter border */
+}
+
+.form-control:focus {
+    background-color: #2b2b2b; /* Dark background color on input focus */
+    color: #ffffff; /* Light text color for input fields */
+}
+
+.form-select {
+    background-color: #2b2b2b; /* Dark select boxes */
+    color: #ffffff; /* Light text color for select options */
+    border: 1px solid #424242; /* Slightly lighter border */
+}
+
+.form-label {
+    color: #ffffff; /* Light label text color */
+}
+
+/* Optional: Style select options */
+select option {
+    background-color: #2b2b2b; /* Dark select options */
+    color: #ffffff; /* Light text color for select options */
+}
+
+[readonly] {
+    color: #a9a9a9; /* Light gray color for readonly text */
+}
