@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="platformSelect" class="form-label">Platform:</label>
+                    <label for="platformSelect" class="form-label">Platform</label>
                     <select id="platformSelect" class="form-select" onchange="updateModelSelect()">
                         <option value="">Select Platform</option>
                         <!-- Populate platform options dynamically from the tableData object -->
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="modelSelect" class="form-label">Model:</label>
+                    <label for="modelSelect" class="form-label">Model</label>
                     <select id="modelSelect" class="form-select" onchange="updateRateTokens()">
                         <option value="">Select Model</option>
                         <!-- This select will be populated dynamically based on the selected platform -->
@@ -36,13 +36,13 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="inputRateTokens" class="form-label">Cost per 1K Input Tokens ($):</label>
+                    <label for="inputRateTokens" class="form-label">Cost per 1K Input Tokens ($)</label>
                     <input type="text" id="inputTokenDisplay" class="form-control" readonly>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="outputRateTokens" class="form-label">Cost per 1K Output Tokens ($):</label>
+                    <label for="outputRateTokens" class="form-label">Cost per 1K Output Tokens ($)</label>
                     <input type="text" id="outputTokenDisplay" class="form-control" readonly>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="costEstimate" class="form-label">Monthly estimate:</label>
+                    <label for="costEstimate" class="form-label">Monthly estimate</label>
                     <textarea id="costEstimate" class="form-control" readonly></textarea>
                 </div>
             </div>
@@ -107,9 +107,9 @@
 
         function updateCostEstimate(input_rate, output_rate) {
             const costEstimate = document.getElementById("costEstimate");
-            estimate_text = "Assuming you process 1000 generative AI transactions per hour, operate on a 24-hr/day basis, and each transaction has an average of 300 input tokens and produce an average of 250 output tokens, your 30-day monthly estimate is: $";
+            estimate_text = "Assuming you process 1,000 generative AI transactions per hour, 24/7 operations, and each transaction has an average of 300 input tokens and produce an average of 250 output tokens, your 30-day monthly estimate is: $";
             totalInputCost = (input_rate * 300 * 1000 * 24 * 30) / 1000;
-            totalOutputCost = (output_rate * 300 * 1000 * 24 * 30) / 1000;
+            totalOutputCost = (output_rate * 250 * 1000 * 24 * 30) / 1000;
             totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
 
             costEstimate.value = estimate_text + totalCost + "."
