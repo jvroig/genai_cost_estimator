@@ -1,7 +1,9 @@
 body {
+    background-image: url('images/gradient.jpg');
+    background-size: cover;
     background-color: #121212; /* Dark background color */
     color: #ffffff; /* Light text color */
-}
+} 
 
 .container {
     background-color: #1a1a1a; /* Slightly lighter background for the container */
