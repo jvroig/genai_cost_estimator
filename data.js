@@ -51,14 +51,14 @@ const tableData = {
             "InputRateChars": 0.025067,
             "OutputRateChars": 0.025067
         },
-        "Amazon Titan Text – Lite": {
+        "Amazon Titan Text - Lite": {
             "Region": "Global",
             "InputRateTokens": 0.000300,
             "OutputRateTokens": 0.000400,
             "InputRateChars": 0.000400,
             "OutputRateChars": 0.000533
         },
-        "Amazon Titan Text – Express": {
+        "Amazon Titan Text - Express": {
             "Region": "Global",
             "InputRateTokens": 0.001300,
             "OutputRateTokens": 0.001700,
