@@ -48,3 +48,25 @@ select option {
     overflow: auto;
     readonly: true;
 }
+
+.nav-tabs {
+    background-color: #1a1a1a; /* Background color for tabs */
+    border: 0px solid #424242; /* Border color for tabs */
+    border-bottom: 1px solid #424242; /* Border color for tabs */
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+    background-color: #1a1a1a; /* Dark tab background color */
+    color: #ffffff; /* Light text color for tabs */
+    border: 1px solid #424242; /* Border for tabs */
+    border-radius: 5px 5px 0 0;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #2b2b2b; /* Background color for the active tab */
+    color: #ffffff; /* Text color for the active tab */
+    border: 1px solid #424242; /* Border for the active tab */
+    border-radius: 5px 5px 0 0;
+}

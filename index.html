@@ -50,11 +50,49 @@
     </div>
 
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="costEstimate" class="form-label">Monthly estimate</label>
-                    <textarea id="costEstimate" class="form-control" readonly></textarea>
+        <!-- Nav tabs for Scenario and Custom Tokens -->
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="scenario-tab" data-bs-toggle="tab" data-bs-target="#scenario" href="#scenario" role="tab" aria-controls="scenario" aria-selected="true">Scenario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="customTokens-tab" data-bs-toggle="tab" data-bs-target="#customTokens" href="#customTokens" role="tab" aria-controls="customTokens" aria-selected="false">Custom Tokens</a>
+            </li>
+        </ul>
+        <!-- Tab content -->
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="scenario" role="tabpanel" aria-labelledby="scenario-tab">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="costEstimate" class="form-label">Monthly estimate</label>
+                            <textarea id="costEstimate" class="form-control" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="customTokens" role="tabpanel" aria-labelledby="customTokens-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="monthlyInputTokens" class="form-label">Total Input Tokens</label>
+                            <input type="text" id="monthlyInputTokens" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="monthlyOutputTokens" class="form-label">Total Output Tokens</label>
+                            <input type="text" id="monthlyOutputTokens" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="customCostEstimate" class="form-label">Custom Estimate</label>
+                            <textarea id="customCostEstimate" class="form-control" readonly></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,7 +118,6 @@
             </div>
         </div>
     </div>
-
 
    <!-- Include Bootstrap 5 JS and Popper.js from CDNs -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -122,9 +159,22 @@
                 inputTokenDisplay.value = modelData.InputRateTokens;
                 outputTokenDisplay.value = modelData.OutputRateTokens;
                 updateCostEstimate(modelData.InputRateTokens, modelData.OutputRateTokens);
+
+                const monthlyInputTokens  = parseFloat(document.getElementById("monthlyInputTokens").value);
+                const monthlyOutputTokens = parseFloat(document.getElementById("monthlyOutputTokens").value);
+
+                //Default to scenario tokens if custom token input is empty
+                if (isNaN(monthlyInputTokens)) {
+                    document.getElementById("monthlyInputTokens").value = 300 * 1000 * 24 * 30; //FIXME: DRY up, turn this into a variable that all funcs can use
+                    document.getElementById("monthlyOutputTokens").value = 250 * 1000 * 24 * 30; //FIXME: DRY up, turn this into a variable that all funcs can use
+                }
+
+                updateCustomCostEstimate(modelData.InputRateTokens, modelData.OutputRateTokens)
+
             } else {
                 tokenDisplay.value = "";
             }
+
         }
 
         function updateCostEstimate(input_rate, output_rate) {
@@ -136,6 +186,29 @@
 
             costEstimate.value = estimate_text + totalCost + "."
         }
+
+        function updateCustomCostEstimate(input_rate, output_rate) {
+            const monthlyInputTokens  = parseFloat(document.getElementById("monthlyInputTokens").value);
+            const monthlyOutputTokens = parseFloat(document.getElementById("monthlyOutputTokens").value);
+            const customCostEstimate = document.getElementById("customCostEstimate");
+
+            if (!isNaN(monthlyInputTokens) && !isNaN(monthlyOutputTokens)) {
+                const totalInputCost = (monthlyInputTokens * input_rate) / 1000;
+                const totalOutputCost = (monthlyOutputTokens * output_rate) / 1000;
+                const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+
+                in_tokens = parseFloat(monthlyInputTokens).toLocaleString();
+                out_tokens = parseFloat(monthlyOutputTokens).toLocaleString();
+                customCostEstimate.value = `Your total cost estimate for ${in_tokens} input tokens and ${out_tokens} output tokens is: $${totalCost}`;
+            } else {
+                customCostEstimate.value = 'Please enter valid numbers for input and output tokens.';
+            }
+        }
+
+        // Add event listener for custom estimate calculation
+        document.getElementById("monthlyInputTokens").addEventListener("input", updateRateTokens);
+        document.getElementById("monthlyOutputTokens").addEventListener("input", updateRateTokens);
+
     </script>
 </body>
 </html>
