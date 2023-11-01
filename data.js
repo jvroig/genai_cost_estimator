@@ -1,19 +1,5 @@
 const tableData = {
     "OpenAI": {
-        "GPT-4 8K": {
-            "Region": "Global",
-            "InputRateTokens": 0.030000,
-            "OutputRateTokens": 0.060000,
-            "InputRateChars": 0.040000,
-            "OutputRateChars": 0.080000
-        },
-        "GPT-4 32K": {
-            "Region": "Global",
-            "InputRateTokens": 0.060000,
-            "OutputRateTokens": 0.120000,
-            "InputRateChars": 0.080000,
-            "OutputRateChars": 0.160000
-        },
         "GPT-3.5 Turbo 4K": {
             "Region": "Global",
             "InputRateTokens": 0.001500,
@@ -34,6 +20,20 @@ const tableData = {
             "OutputRateTokens": 0.016000,
             "InputRateChars": 0.016000,
             "OutputRateChars": 0.021333
+        },
+        "GPT-4 8K": {
+            "Region": "Global",
+            "InputRateTokens": 0.030000,
+            "OutputRateTokens": 0.060000,
+            "InputRateChars": 0.040000,
+            "OutputRateChars": 0.080000
+        },
+        "GPT-4 32K": {
+            "Region": "Global",
+            "InputRateTokens": 0.060000,
+            "OutputRateTokens": 0.120000,
+            "InputRateChars": 0.080000,
+            "OutputRateChars": 0.160000
         },
     },
     "Amazon Bedrock": {
@@ -58,7 +58,7 @@ const tableData = {
             "InputRateChars": 0.000400,
             "OutputRateChars": 0.000533
         },
-        "Amazon Titan Text - Express": {
+        "Amazon Titan Text  Express": {
             "Region": "Global",
             "InputRateTokens": 0.001300,
             "OutputRateTokens": 0.001700,
@@ -134,20 +134,6 @@ const tableData = {
         },
     },
     "Azure OpenAI Service": {
-        "GPT-4 8K": {
-            "Region": "Global",
-            "InputRateTokens": 0.030000,
-            "OutputRateTokens": 0.060000,
-            "InputRateChars": 0.040000,
-            "OutputRateChars": 0.080000
-        },
-        "GPT-4 32K": {
-            "Region": "Global",
-            "InputRateTokens": 0.060000,
-            "OutputRateTokens": 0.120000,
-            "InputRateChars": 0.080000,
-            "OutputRateChars": 0.160000
-        },
         "GPT-3.5 Turbo 4K": {
             "Region": "Global",
             "InputRateTokens": 0.001500,
@@ -162,16 +148,30 @@ const tableData = {
             "InputRateChars": 0.004000,
             "OutputRateChars": 0.005333
         },
+        "GPT-4 8K": {
+            "Region": "Global",
+            "InputRateTokens": 0.030000,
+            "OutputRateTokens": 0.060000,
+            "InputRateChars": 0.040000,
+            "OutputRateChars": 0.080000
+        },
+        "GPT-4 32K": {
+            "Region": "Global",
+            "InputRateTokens": 0.060000,
+            "OutputRateTokens": 0.120000,
+            "InputRateChars": 0.080000,
+            "OutputRateChars": 0.160000
+        },
     },
     "Anthropic": {
-        "Claude 2": {
+        "Claude Instant": {
             "Region": "Global",
             "InputRateTokens": 0.001630,
             "OutputRateTokens": 0.005510,
             "InputRateChars": 0.002173,
             "OutputRateChars": 0.007347
         },
-        "Claude Instant": {
+        "Claude 2": {
             "Region": "Global",
             "InputRateTokens": 0.011020,
             "OutputRateTokens": 0.032680,
