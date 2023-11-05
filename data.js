@@ -180,3 +180,37 @@ const tableData = {
         },
     },
 };
+
+const instanceData = {
+    "AWS": {
+        "Sagemaker": {
+            "ml.g5.2xlarge": {
+                "vCPU": 8,
+                "RAM": 32,
+                "GPU": 1,
+                "VRAM": 24,
+                "GPUType": "A10G"
+            },
+            "ml.g5.12xlarge": {
+                "vCPU": 48,
+                "RAM": 192,
+                "GPU": 4,
+                "VRAM": 96,
+                "GPUType": "A10G"
+            },
+            "ml.g5.48xlarge": {
+                "vCPU": 192,
+                "RAM": 768,
+                "GPU": 8,
+                "VRAM": 192,
+                "GPUType": "A10G"
+            },
+        }
+    }
+};
+
+//Globals for computations
+const hrsPerDay       = 24;
+const daysInMonth     = 31;
+const tokenBillingDiv = 1000; //The divisior is 1,000 because token costing is per 1000 tokens
+
