@@ -5,35 +5,40 @@ const tableData = {
             "InputRateTokens": 0.001500,
             "OutputRateTokens": 0.002000,
             "InputRateChars": 0.002000,
-            "OutputRateChars": 0.002667
+            "OutputRateChars": 0.002667,
+            "TransactionRate": '',
         },
         "GPT-3.5 Turbo 16K": {
             "Region": "Global",
             "InputRateTokens": 0.003000,
             "OutputRateTokens": 0.004000,
             "InputRateChars": 0.004000,
-            "OutputRateChars": 0.005333
+            "OutputRateChars": 0.005333,
+            "TransactionRate": '',
         },
         "GPT-3.5 Turbo 4K Fine-Tuned": {
             "Region": "Global",
             "InputRateTokens": 0.012000,
             "OutputRateTokens": 0.016000,
             "InputRateChars": 0.016000,
-            "OutputRateChars": 0.021333
+            "OutputRateChars": 0.021333,
+            "TransactionRate": '',
         },
         "GPT-4 8K": {
             "Region": "Global",
             "InputRateTokens": 0.030000,
             "OutputRateTokens": 0.060000,
             "InputRateChars": 0.040000,
-            "OutputRateChars": 0.080000
+            "OutputRateChars": 0.080000,
+            "TransactionRate": '',
         },
         "GPT-4 32K": {
             "Region": "Global",
             "InputRateTokens": 0.060000,
             "OutputRateTokens": 0.120000,
             "InputRateChars": 0.080000,
-            "OutputRateChars": 0.160000
+            "OutputRateChars": 0.160000,
+            "TransactionRate": '',
         },
     },
     "Amazon Bedrock": {
@@ -42,49 +47,56 @@ const tableData = {
             "InputRateTokens": 0.012500,
             "OutputRateTokens": 0.012500,
             "InputRateChars": 0.016667,
-            "OutputRateChars": 0.016667
+            "OutputRateChars": 0.016667,
+            "TransactionRate": '',
         },
         "AI21 Jurassic-2 Ultra": {
             "Region": "Global",
             "InputRateTokens": 0.018800,
             "OutputRateTokens": 0.018800,
             "InputRateChars": 0.025067,
-            "OutputRateChars": 0.025067
+            "OutputRateChars": 0.025067,
+            "TransactionRate": '',
         },
         "Amazon Titan Text - Lite": {
             "Region": "Global",
             "InputRateTokens": 0.000300,
             "OutputRateTokens": 0.000400,
             "InputRateChars": 0.000400,
-            "OutputRateChars": 0.000533
+            "OutputRateChars": 0.000533,
+            "TransactionRate": '',
         },
         "Amazon Titan Text  Express": {
             "Region": "Global",
             "InputRateTokens": 0.001300,
             "OutputRateTokens": 0.001700,
             "InputRateChars": 0.001733,
-            "OutputRateChars": 0.002267
+            "OutputRateChars": 0.002267,
+            "TransactionRate": '',
         },
         "Anthropic Claude Instant": {
             "Region": "Global",
             "InputRateTokens": 0.001630,
             "OutputRateTokens": 0.005510,
             "InputRateChars": 0.002173,
-            "OutputRateChars": 0.007347
+            "OutputRateChars": 0.007347,
+            "TransactionRate": '',
         },
         "Anthropic Claude 2": {
             "Region": "Global",
             "InputRateTokens": 0.011020,
             "OutputRateTokens": 0.032680,
             "InputRateChars": 0.014693,
-            "OutputRateChars": 0.043573
+            "OutputRateChars": 0.043573,
+            "TransactionRate": '',
         },
         "Cohere Command": {
             "Region": "Global",
             "InputRateTokens": 0.001500,
             "OutputRateTokens": 0.002000,
             "InputRateChars": 0.002000,
-            "OutputRateChars": 0.002667
+            "OutputRateChars": 0.002667,
+            "TransactionRate": '',
         },
     },
     "Cohere": {
@@ -93,7 +105,8 @@ const tableData = {
             "InputRateTokens": 0.001500,
             "OutputRateTokens": 0.002000,
             "InputRateChars": 0.002000,
-            "OutputRateChars": 0.002667
+            "OutputRateChars": 0.002667,
+            "TransactionRate": '',
         },
     },
     "Google Cloud Vertex AI": {
@@ -102,35 +115,40 @@ const tableData = {
             "InputRateTokens": 0.000375,
             "OutputRateTokens": 0.000375,
             "InputRateChars": 0.000500,
-            "OutputRateChars": 0.000500
+            "OutputRateChars": 0.000500,
+            "TransactionRate": '',
         },
         "PalM 2 for Chat": {
             "Region": "Global",
             "InputRateTokens": 0.000375,
             "OutputRateTokens": 0.000375,
             "InputRateChars": 0.000500,
-            "OutputRateChars": 0.000500
+            "OutputRateChars": 0.000500,
+            "TransactionRate": '',
         },
         "Codey for Code Generation": {
             "Region": "Global",
             "InputRateTokens": 0.000375,
             "OutputRateTokens": 0.000375,
             "InputRateChars": 0.000500,
-            "OutputRateChars": 0.000500
+            "OutputRateChars": 0.000500,
+            "TransactionRate": '',
         },
         "Codey for Code Chat": {
             "Region": "Global",
             "InputRateTokens": 0.000375,
             "OutputRateTokens": 0.000375,
             "InputRateChars": 0.000500,
-            "OutputRateChars": 0.000500
+            "OutputRateChars": 0.000500,
+            "TransactionRate": '',
         },
         "Codey for Code Completion": {
             "Region": "Global",
             "InputRateTokens": 0.000375,
             "OutputRateTokens": 0.000375,
             "InputRateChars": 0.000500,
-            "OutputRateChars": 0.000500
+            "OutputRateChars": 0.000500,
+            "TransactionRate": '',
         },
     },
     "Azure OpenAI Service": {
@@ -139,28 +157,32 @@ const tableData = {
             "InputRateTokens": 0.001500,
             "OutputRateTokens": 0.002000,
             "InputRateChars": 0.002000,
-            "OutputRateChars": 0.002667
+            "OutputRateChars": 0.002667,
+            "TransactionRate": '',
         },
         "GPT-3.5 Turbo 16K": {
             "Region": "Global",
             "InputRateTokens": 0.003000,
             "OutputRateTokens": 0.004000,
             "InputRateChars": 0.004000,
-            "OutputRateChars": 0.005333
+            "OutputRateChars": 0.005333,
+            "TransactionRate": '',
         },
         "GPT-4 8K": {
             "Region": "Global",
             "InputRateTokens": 0.030000,
             "OutputRateTokens": 0.060000,
             "InputRateChars": 0.040000,
-            "OutputRateChars": 0.080000
+            "OutputRateChars": 0.080000,
+            "TransactionRate": '',
         },
         "GPT-4 32K": {
             "Region": "Global",
             "InputRateTokens": 0.060000,
             "OutputRateTokens": 0.120000,
             "InputRateChars": 0.080000,
-            "OutputRateChars": 0.160000
+            "OutputRateChars": 0.160000,
+            "TransactionRate": '',
         },
     },
     "Anthropic": {
@@ -169,14 +191,26 @@ const tableData = {
             "InputRateTokens": 0.001630,
             "OutputRateTokens": 0.005510,
             "InputRateChars": 0.002173,
-            "OutputRateChars": 0.007347
+            "OutputRateChars": 0.007347,
+            "TransactionRate": '',
         },
         "Claude 2": {
             "Region": "Global",
             "InputRateTokens": 0.011020,
             "OutputRateTokens": 0.032680,
             "InputRateChars": 0.014693,
-            "OutputRateChars": 0.043573
+            "OutputRateChars": 0.043573,
+            "TransactionRate": '',
+        },
+    },
+    "Oracle Cloud": {
+        "Cohere Command": {
+            "Region": "Global",
+            "InputRateTokens": 0.00,
+            "OutputRateTokens": 0.00,
+            "InputRateChars": 0.00,
+            "OutputRateChars": 0.00,
+            "TransactionRate": 0.25,
         },
     },
 };

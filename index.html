@@ -34,16 +34,22 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label for="inputRateTokens" class="form-label">Cost per 1K Input Tokens ($)</label>
+                    <label for="inputTokenDisplay" class="form-label">Cost per 1K Input Tokens ($)</label>
                     <input type="text" id="inputTokenDisplay" class="form-control" readonly>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label for="outputRateTokens" class="form-label">Cost per 1K Output Tokens ($)</label>
+                    <label for="outputTokenDisplay" class="form-label">Cost per 1K Output Tokens ($)</label>
                     <input type="text" id="outputTokenDisplay" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="transactionRateDisplay" class="form-label">Cost per 1K Transactions ($)</label>
+                    <input type="text" id="transactionRateDisplay" class="form-control" readonly>
                 </div>
             </div>
         </div>
@@ -186,9 +192,10 @@
                 }
             }
 
-            inputTokenDisplay.value  = '';
-            outputTokenDisplay.value = '';
-            costEstimate.value       = '';
+            inputTokenDisplay.value      = '';
+            outputTokenDisplay.value     = '';
+            transactionRateDisplay.value = '';
+            costEstimate.value           = '';
         }
 
         // Function to display rate tokens when a model is selected
@@ -202,8 +209,16 @@
 
             if (selectedPlatform && selectedModel && tableData[selectedPlatform] && tableData[selectedPlatform][selectedModel]) {
                 const modelData = tableData[selectedPlatform][selectedModel];
-                inputTokenDisplay.value = modelData.InputRateTokens;
-                outputTokenDisplay.value = modelData.OutputRateTokens;
+                transactionRateDisplay.value = modelData.TransactionRate;
+                if (transactionRateDisplay.value == '') {
+                    inputTokenDisplay.value      = modelData.InputRateTokens;
+                    outputTokenDisplay.value     = modelData.OutputRateTokens;
+                    transactionRateDisplay.value = "N/A"
+                }
+                else {
+                    inputTokenDisplay.value      = "N/A";
+                    outputTokenDisplay.value     = "N/A";
+                }
                 updateCostEstimate();
 
                 const monthlyInputTokens  = parseFloat(document.getElementById("monthlyInputTokens").value);
@@ -227,9 +242,17 @@
         function updateCostEstimate() {
             const costEstimate = document.getElementById("costEstimate");
             estimate_text = "Assuming you process 1,000 generative AI transactions per hour, 24/7 operations, and each transaction has an average of 300 input tokens and produce an average of 250 output tokens, your 30-day monthly estimate is: $";
-            totalInputCost = (inputTokenDisplay.value * 300 * 1000 * 24 * 30) / 1000;
-            totalOutputCost = (outputTokenDisplay.value * 250 * 1000 * 24 * 30) / 1000;
-            totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+            if (inputTokenDisplay.value == "N/A") {
+                //Per-Transaction cost instead of per-token
+                totalCost = ((transactionRateDisplay.value * 1000 * hrsPerDay * daysInMonth) / tokenBillingDiv).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+            }
+            else {
+                console.log("Per Token")
+                totalInputCost = (inputTokenDisplay.value * 300 * 1000 * hrsPerDay * daysInMonth) / tokenBillingDiv;
+                totalOutputCost = (outputTokenDisplay.value * 250 * 1000 * hrsPerDay * daysInMonth) / tokenBillingDiv;
+                totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+            }
+
 
             costEstimate.value = estimate_text + totalCost + "."
         }
@@ -240,13 +263,19 @@
             const customCostEstimate = document.getElementById("customCostEstimate");
 
             if (!isNaN(monthlyInputTokens) && !isNaN(monthlyOutputTokens)) {
-                const totalInputCost = (monthlyInputTokens * inputTokenDisplay.value) / 1000;
-                const totalOutputCost = (monthlyOutputTokens * outputTokenDisplay.value) / 1000;
-                const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                if (inputTokenDisplay.value == "N/A") {
+                    customCostEstimate.value = 'Custom Tokens estimation is not possible for Per-Transaction billing models.';
+                }
+                else {
+                    const totalInputCost = (monthlyInputTokens * inputTokenDisplay.value) / 1000;
+                    const totalOutputCost = (monthlyOutputTokens * outputTokenDisplay.value) / 1000;
+                    const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                
+                    in_tokens = parseFloat(monthlyInputTokens).toLocaleString();
+                    out_tokens = parseFloat(monthlyOutputTokens).toLocaleString();
+                    customCostEstimate.value = `Your total cost estimate for ${in_tokens} input tokens and ${out_tokens} output tokens is: $${totalCost}`;
+                }
 
-                in_tokens = parseFloat(monthlyInputTokens).toLocaleString();
-                out_tokens = parseFloat(monthlyOutputTokens).toLocaleString();
-                customCostEstimate.value = `Your total cost estimate for ${in_tokens} input tokens and ${out_tokens} output tokens is: $${totalCost}`;
             } else {
                 customCostEstimate.value = 'Please enter valid numbers for input and output tokens.';
             }
@@ -262,11 +291,25 @@
             const customScenarioCostEstimate = document.getElementById("customScenarioCostEstimate");
 
             if (!isNaN(transactionsPerHour) && !isNaN(avgInputTokens) && !isNaN(avgOutputTokens) && !isNaN(hoursPerDay) && !isNaN(days)) {
-                const totalInputCost = (inputTokenDisplay.value * avgInputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
-                const totalOutputCost = (outputTokenDisplay.value * avgOutputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
-                const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                if (inputTokenDisplay.value == "N/A") {
+                    //Per-Transaction cost instead of per-token
+                    totalCost = ((transactionRateDisplay.value * transactionsPerHour * hoursPerDay * days) / tokenBillingDiv).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                    customScenarioCostEstimate.value = `Your total cost estimate for the custom scenario (per-transaction billing) is: $${totalCost}`;
+                }
+                else {
+                    console.log("Recomputing")
+                    const totalInputCost  = (inputTokenDisplay.value * avgInputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
+                    const totalOutputCost = (outputTokenDisplay.value * avgOutputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
+                    const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                    console.log(totalCost)
+                    customScenarioCostEstimate.value = `Your total cost estimate for the custom scenario (per-token billing) is: $${totalCost}`;
+                }
 
-                customScenarioCostEstimate.value = `Your total cost estimate for the custom scenario is: $${totalCost}`;
+                // const totalInputCost  = (inputTokenDisplay.value * avgInputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
+                // const totalOutputCost = (outputTokenDisplay.value * avgOutputTokens * transactionsPerHour * hoursPerDay * days) / 1000;
+                // const totalCost = (totalInputCost + totalOutputCost).toLocaleString('en-US', { style: 'decimal', maximumFractionDigits: 2 });
+                // customScenarioCostEstimate.value = `Your total cost estimate for the custom scenario is: $${totalCost}`;
+
             } else {
                 customScenarioCostEstimate.value = 'Please enter valid numbers for all fields.';
             }
