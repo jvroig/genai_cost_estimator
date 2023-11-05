@@ -54,18 +54,17 @@
             </div>
         </div>
     </div>
-
     <div class="container mt-5">
-        <!-- Nav tabs for Scenario and Custom Tokens -->
+        <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
                 <button class="nav-link active" id="scenario-tab" data-bs-toggle="tab" data-bs-target="#scenario" role="tab" aria-controls="scenario" aria-selected="true">Scenario</a>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="customTokens-tab" data-bs-toggle="tab" data-bs-target="#customTokens" role="tab" aria-controls="customTokens" aria-selected="false">Custom Tokens</a>
+                <button class="nav-link" id="customScenario-tab" data-bs-toggle="tab" data-bs-target="#customScenario" role="tab" aria-controls="customScenario" aria-selected="false">Custom Scenario</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="customScenario-tab" data-bs-toggle="tab" data-bs-target="#customScenario" role="tab" aria-controls="customScenario" aria-selected="false">Custom Scenario</button>
+                <button class="nav-link" id="customTokens-tab" data-bs-toggle="tab" data-bs-target="#customTokens" role="tab" aria-controls="customTokens" aria-selected="false">Custom Tokens</a>
             </li>
 
         </ul>
@@ -75,12 +74,56 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="costEstimate" class="form-label">Monthly estimate</label>
+                            <label for="costEstimate" class="form-label">Monthly Estimate</label>
                             <textarea id="costEstimate" class="form-control" readonly></textarea>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="tab-pane fade" id="customScenario" role="tabpanel" aria-labelledby="customScenario-tab">
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="transactionsPerHour" class="form-label">Transactions/hr</label>
+                            <input type="number" id="transactionsPerHour" class="form-control" step="1" min="0" value="1000">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="avgInputTokens" class="form-label">Avg Input Tokens</label>
+                            <input type="number" id="avgInputTokens" class="form-control" step="1" min="0" value="300">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="avgOutputTokens" class="form-label">Avg Output Tokens</label>
+                            <input type="number" id="avgOutputTokens" class="form-control" step="1" min="0" value="250">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="hoursPerDay" class="form-label">Hrs/day</label>
+                            <input type="number" id="hoursPerDay" class="form-control" step="1" min="0" value="24">
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <div class="form-group">
+                            <label for="days" class="form-label">Days</label>
+                            <input type="number" id="days" class="form-control" step="1" min="0" value="30">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="customScenarioCostEstimate" class="form-label">Custom Scenario Estimate</label>
+                            <textarea id="customScenarioCostEstimate" class="form-control" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="tab-pane fade" id="customTokens" role="tabpanel" aria-labelledby="customTokens-tab">
                 <div class="row mt-4">
                     <div class="col-md-6">
@@ -105,48 +148,6 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="customScenario" role="tabpanel" aria-labelledby="customScenario-tab">
-                <div class="row mt-4">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="transactionsPerHour" class="form-label">Transactions per Hour</label>
-                            <input type="number" id="transactionsPerHour" class="form-control" step="1" min="0" value="1000">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="avgInputTokens" class="form-label">Average Input Tokens</label>
-                            <input type="number" id="avgInputTokens" class="form-control" step="1" min="0" value="300">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="avgOutputTokens" class="form-label">Average Output Tokens</label>
-                            <input type="number" id="avgOutputTokens" class="form-control" step="1" min="0" value="250">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="hoursPerDay" class="form-label">Hours per Day</label>
-                            <input type="number" id="hoursPerDay" class="form-control" step="1" min="0" value="24">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="days" class="form-label">Days</label>
-                            <input type="number" id="days" class="form-control" step="1" min="0" value="30">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="customScenarioCostEstimate" class="form-label">Custom Scenario Estimate</label>
-                            <textarea id="customScenarioCostEstimate" class="form-control" readonly></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>            
         </div>
     </div>
 
