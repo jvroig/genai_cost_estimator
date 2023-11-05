@@ -211,6 +211,6 @@ const instanceData = {
 
 //Globals for computations
 const hrsPerDay       = 24;
-const daysInMonth     = 31;
+const daysInMonth     = 30;
 const tokenBillingDiv = 1000; //The divisior is 1,000 because token costing is per 1000 tokens
 
