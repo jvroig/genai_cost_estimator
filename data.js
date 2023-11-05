@@ -180,6 +180,3 @@ const tableData = {
         },
     },
 };
-
-const inputRateTokensGPT4_8K = tableData["OpenAI"]["GPT-4 8K"]["InputRateTokens"];
-console.log('Input Rate Tokens for GPT-4 8K:', inputRateTokensGPT4_8K);
