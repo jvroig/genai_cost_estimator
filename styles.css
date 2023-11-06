@@ -56,7 +56,6 @@ select option {
     height: 150px; /* Adjust the height to your preference */
     white-space: pre-line;
     overflow: auto;
-    readonly: true;
 }
 
 .nav-tabs {
