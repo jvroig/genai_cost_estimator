@@ -1,6 +1,6 @@
 body {
     background-image: url('images/gradient.jpg');
-    background-size: cover;
+    background-size: auto;
     background-color: #121212; /* Dark background color */
     color: #ffffff; /* Light text color */
 } 
