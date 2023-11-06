@@ -5,6 +5,16 @@ body {
     color: #ffffff; /* Light text color */
 } 
 
+.banner {
+    background-color: #1a1a1a; /* Match the container's background color */
+    color: #ffffff; /* Text color for the banner */
+    text-align: center; /* Center-align the text */
+    padding: 10px; /* Add some padding for spacing */
+    font-size: 24px; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px; /* Add margin to separate it from the content below */
+}
+
 .container {
     background-color: #1a1a1a; /* Slightly lighter background for the container */
     padding: 20px;
