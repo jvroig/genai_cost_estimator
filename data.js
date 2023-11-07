@@ -1,6 +1,14 @@
 const tableData = {
     "OpenAI": {
-        "GPT-3.5 Turbo 4K": {
+        "GPT-3.5 Turbo 16K": {
+            "Region": "Global",
+            "InputRateTokens": 0.001000,
+            "OutputRateTokens": 0.002000,
+            "InputRateChars": 0.001333,
+            "OutputRateChars": 0.002667,
+            "TransactionRate": '',
+        },
+        "GPT-3.5 Turbo Instruct 4K": {
             "Region": "Global",
             "InputRateTokens": 0.001500,
             "OutputRateTokens": 0.002000,
@@ -8,20 +16,12 @@ const tableData = {
             "OutputRateChars": 0.002667,
             "TransactionRate": '',
         },
-        "GPT-3.5 Turbo 16K": {
-            "Region": "Global",
-            "InputRateTokens": 0.003000,
-            "OutputRateTokens": 0.004000,
-            "InputRateChars": 0.004000,
-            "OutputRateChars": 0.005333,
-            "TransactionRate": '',
-        },
         "GPT-3.5 Turbo 4K Fine-Tuned": {
             "Region": "Global",
-            "InputRateTokens": 0.012000,
-            "OutputRateTokens": 0.016000,
-            "InputRateChars": 0.016000,
-            "OutputRateChars": 0.021333,
+            "InputRateTokens": 0.003000,
+            "OutputRateTokens": 0.006000,
+            "InputRateChars": 0.004000,
+            "OutputRateChars": 0.008000,
             "TransactionRate": '',
         },
         "GPT-4 8K": {
@@ -38,6 +38,22 @@ const tableData = {
             "OutputRateTokens": 0.120000,
             "InputRateChars": 0.080000,
             "OutputRateChars": 0.160000,
+            "TransactionRate": '',
+        },
+        "GPT-4 Turbo 128K Preview": {
+            "Region": "Global",
+            "InputRateTokens": 0.010000,
+            "OutputRateTokens": 0.030000,
+            "InputRateChars": 0.013333,
+            "OutputRateChars": 0.040000,
+            "TransactionRate": '',
+        },
+        "GPT-4 Turbo Vision 128K Preview": {
+            "Region": "Global",
+            "InputRateTokens": 0.010000,
+            "OutputRateTokens": 0.030000,
+            "InputRateChars": 0.013333,
+            "OutputRateChars": 0.040000,
             "TransactionRate": '',
         },
     },
