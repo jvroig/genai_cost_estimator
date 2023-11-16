@@ -114,6 +114,22 @@ const tableData = {
             "OutputRateChars": 0.002667,
             "TransactionRate": '',
         },
+        "Cohere Command-Light": {
+            "Region": "Global",
+            "InputRateTokens": 0.000300,
+            "OutputRateTokens": 0.000600,
+            "InputRateChars": 0.000400,
+            "OutputRateChars": 0.000800,
+            "TransactionRate": '',
+        },
+        "Meta Llama 2 Chat (13B)": {
+            "Region": "Global",
+            "InputRateTokens": 0.000750,
+            "OutputRateTokens": 0.001000,
+            "InputRateChars": 0.001000,
+            "OutputRateChars": 0.001333,
+            "TransactionRate": '',
+        },
     },
     "Cohere": {
         "Cohere Command": {
