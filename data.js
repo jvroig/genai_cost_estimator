@@ -341,6 +341,32 @@ const tableData = {
             "TransactionRate": 0.001500,
         },
     },
+    "Mistral AI": {
+        "Mistral-tiny": {
+            "Region": "Global",
+            "InputRateTokens": 0.000150,
+            "OutputRateTokens": 0.000449,
+            "InputRateChars": 0.000200,
+            "OutputRateChars": 0.000599,
+            "TransactionRate": '',
+        },
+        "Mistral-small": {
+            "Region": "Global",
+            "InputRateTokens": 0.000642,
+            "OutputRateTokens": 0.001926,
+            "InputRateChars": 0.000856,
+            "OutputRateChars": 0.002568,
+            "TransactionRate": '',
+        },
+        "Mistral-medium": {
+            "Region": "Global",
+            "InputRateTokens": 0.002675,
+            "OutputRateTokens": 0.008025,
+            "InputRateChars": 0.003567,
+            "OutputRateChars": 0.010700,
+            "TransactionRate": '',
+        },
+    },
 };
 
 const instanceData = {
