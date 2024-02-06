@@ -101,7 +101,7 @@ const tableData = {
         "Anthropic Claude 2": {
             "Region": "US East (N. Virginia) and US West (Oregon)",
             "InputRateTokens": 0.008000,
-            "OutputRateTokens": 0.024000
+            "OutputRateTokens": 0.024000,
             "InputRateChars": 0.010667,
             "OutputRateChars": 0.032000,
             "TransactionRate": '',
