@@ -21,9 +21,13 @@
                         <option value="">Select Platform</option>
                         <!-- Populate platform options dynamically from the tableData object -->
                         <script>
-                            for (const platform in tableData) {
+                            // Extract platform names and sort alphabetically
+                            const platformNames = Object.keys(tableData).sort();
+                            
+                            // Populate dropdown list with sorted platform names
+                            platformNames.forEach(platform => {
                                 document.write(`<option value="${platform}">${platform}</option>`);
-                            }
+                            });
                         </script>
                     </select>
                 </div>
